@@ -1,0 +1,17 @@
+﻿<Window x:Class="ChessUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ChessUI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="600">
+    <Grid Margin="0,0,0,-6">
+        <Grid.Background>
+            <ImageBrush ImageSource="Assets/150.png" />
+        </Grid.Background>
+        <Image Margin="150,0,375,515" Source="/Assets/bb.png" Stretch="Fill" RenderTransformOrigin="0.61,-7.279"/>
+        <Image Margin="225,0,300,515" Source="/Assets/bk.png" Stretch="Fill"/>
+        <Image Margin="376,0,149,515" Source="/Assets/bb.png" Stretch="Fill" RenderTransformOrigin="0.61,-7.279"/>
+    </Grid>
+</Window>
