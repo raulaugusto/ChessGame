@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     public class Bishop : Piece
     {
@@ -15,6 +9,7 @@ namespace ChessLogic
         {
             Color = color;
         }
+
 
         public override Piece Copy()
         {

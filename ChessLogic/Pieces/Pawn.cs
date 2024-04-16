@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ChessLogic
+﻿namespace ChessLogic
 {
     public class Pawn : Piece
     {
@@ -28,7 +22,7 @@ namespace ChessLogic
             switch (type)
             {
                 case PieceType.Bishop:
-                    this.Equals(PieceType.Bishop); 
+                    this.Equals(PieceType.Bishop);
                     break;
                 case PieceType.Rook:
                     this.Equals(PieceType.Rook);
@@ -38,6 +32,8 @@ namespace ChessLogic
                     break;
                 case PieceType.Queen:
                     this.Equals(PieceType.Queen);
+                    break;
+                default:
                     break;
             }
         }

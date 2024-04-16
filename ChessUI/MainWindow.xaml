@@ -5,13 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChessUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600">
-    <Grid Margin="0,0,0,-6">
-        <Grid.Background>
-            <ImageBrush ImageSource="Assets/150.png" />
-        </Grid.Background>
-        <Image Margin="150,0,375,515" Source="/Assets/bb.png" Stretch="Fill" RenderTransformOrigin="0.61,-7.279"/>
-        <Image Margin="225,0,300,515" Source="/Assets/bk.png" Stretch="Fill"/>
-        <Image Margin="376,0,149,515" Source="/Assets/bb.png" Stretch="Fill" RenderTransformOrigin="0.61,-7.279"/>
-    </Grid>
+        Title="Chess" Height="600" Width="600"
+        WindowStartupLocation = "CenterScreen">
+    <Viewbox>
+        <Grid Margin="0,0,0,-6" x:Name="BoardGrid" Height="600" Width="600">
+            <Grid.Background>
+                <ImageBrush ImageSource="Assets\150.png" />
+            </Grid.Background>
+            <UniformGrid x:Name="PieceGrid"
+                         Rows="8"
+                         Columns="8"
+                         RenderOptions.BitmapScalingMode="HighQuality">
+                
+            </UniformGrid>
+        </Grid>
+    </Viewbox>
 </Window>
