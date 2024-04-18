@@ -1,4 +1,7 @@
-﻿namespace ChessLogic
+﻿
+
+
+namespace ChessLogic
 {
     public class Bishop : Piece
     {
@@ -9,13 +12,31 @@
         {
             Color = color;
         }
-
-
         public override Piece Copy()
         {
             Bishop copy = new Bishop(Color);
-            Copy().HasMoved = HasMoved;
+            copy.HasMoved = HasMoved;
             return copy;
+        }
+
+        private static readonly Direction[] dirs = new Direction[]
+        {
+            Direction.NorthWest,
+            Direction.NorthEast,
+            Direction.SouthWest,
+            Direction.SouthEast,
+        };
+
+
+        public override IEnumerable<Move> GetMoves(Position from, Board board)
+        {
+            foreach (var dir in dirs)
+            {
+                foreach (var to in MovePositionsInDir(from, board, dir))
+                {
+                    yield return new NormalMove(from, to);
+                }
+            }
         }
     }
 }

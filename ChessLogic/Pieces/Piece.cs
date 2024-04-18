@@ -8,11 +8,17 @@
         public abstract Piece Copy();
         public abstract IEnumerable<Move> GetMoves(Position from, Board board);
 
-        protected IEnumerable<Position> MovePositionsInDir(Position from, Board board, Direction dir)
+
+        protected IEnumerable<Position> GetDirections(Position from, Board board, Direction[] dirs)
         {
-            for(Position pos = from + dir; Board.isInside(pos); pos += dir)
+            return dirs.SelectMany(dir => MovePositionsInDir(from, board, dir));
+        }
+        protected IEnumerable<Position> MovePositionsInDir(Position from, Board board, Direction dir)
+
+        {
+            for (Position pos = from + dir; Board.isInside(pos); pos += dir)
             {
-                if(board.isEmpty(pos))
+                if (board.isEmpty(pos))
                 {
                     yield return pos;
                     continue;
@@ -20,17 +26,14 @@
 
                 Piece piece = board[pos];
 
-                if(piece.Color != Color)
+                if (piece.Color != Color)
                 {
                     yield return pos;
+                    break;
                 }
                 yield break;
             }
         }
 
-        protected IEnumerable<Position> GetDirections(Position from, Board board, Direction[] dirs)
-        {
-            return dirs.SelectMany(dir => MovePositionsInDir(from, board, dir));
-        }
     }
 }
