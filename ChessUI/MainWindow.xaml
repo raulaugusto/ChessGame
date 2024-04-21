@@ -8,10 +8,13 @@
         Title="Chess" Height="600" Width="600"
         WindowStartupLocation = "CenterScreen">
     <Viewbox>
-        <Grid Margin="0,0,0,-6" x:Name="BoardGrid" Height="600" Width="600">
+        <Grid Margin="0,0,0,-6" x:Name="BoardGrid" Height="600" Width="600" MouseDown="BoardGrid_MouseDown">
             <Grid.Background>
                 <ImageBrush ImageSource="Assets\150.png" />
             </Grid.Background>
+            <UniformGrid x:Name="HighlightGrid">
+                
+            </UniformGrid>
             <UniformGrid x:Name="PieceGrid"
                          Rows="8"
                          Columns="8"

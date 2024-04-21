@@ -9,7 +9,7 @@
         public GameState(Player player, Board board)
         {
             Board = board;
-            CurrentPlayer = player;
+            CurrentPlayer = Player.White;
         }
 
         public IEnumerable<Move> LegalMovesForPiece(Position pos)
