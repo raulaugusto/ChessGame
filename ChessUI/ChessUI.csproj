@@ -16,6 +16,9 @@
     <None Remove="Assets\bp.png" />
     <None Remove="Assets\bq.png" />
     <None Remove="Assets\br.png" />
+    <None Remove="Assets\CursorB.cur" />
+    <None Remove="Assets\CursorW.cur" />
+    <None Remove="Assets\icon.ico" />
     <None Remove="Assets\wb.png" />
     <None Remove="Assets\wk.png" />
     <None Remove="Assets\wn.png" />
@@ -44,6 +47,15 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\br.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Assets\CursorB.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\CursorW.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Assets\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\wb.png">
