@@ -6,21 +6,25 @@
         xmlns:local="clr-namespace:ChessUI"
         mc:Ignorable="d"
         Title="Chess" Height="600" Width="600"
-        WindowStartupLocation = "CenterScreen">
+        WindowStartupLocation="CenterScreen">
     <Viewbox>
-        <Grid Margin="0,0,0,-6" x:Name="BoardGrid" Height="600" Width="600" MouseDown="BoardGrid_MouseDown">
-            <Grid.Background>
-                <ImageBrush ImageSource="Assets\150.png" />
-            </Grid.Background>
-            <UniformGrid x:Name="HighlightGrid">
-                
-            </UniformGrid>
-            <UniformGrid x:Name="PieceGrid"
-                         Rows="8"
-                         Columns="8"
-                         RenderOptions.BitmapScalingMode="HighQuality">
-                
-            </UniformGrid>
-        </Grid>
+        <!-- Wrapping the Grid with a Border -->
+        <Border BorderBrush="#302E2B" BorderThickness="50">
+            <Grid Margin="0,0,0,-6" x:Name="BoardGrid" Height="600" Width="600" MouseDown="BoardGrid_MouseDown">
+                <Grid.Background>
+                    <ImageBrush ImageSource="Assets\150.png" />
+                </Grid.Background>
+                <UniformGrid x:Name="HighlightGrid">
+
+                </UniformGrid>
+
+                <UniformGrid x:Name="PieceGrid"
+                             Rows="8"
+                             Columns="8"
+                             RenderOptions.BitmapScalingMode="HighQuality">
+
+                </UniformGrid>
+            </Grid>
+        </Border>
     </Viewbox>
 </Window>

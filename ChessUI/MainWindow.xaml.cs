@@ -5,6 +5,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -18,7 +19,7 @@ namespace ChessUI
     public partial class MainWindow : Window
     {
         private readonly Image[,] pieceImages = new Image[8, 8];
-        private readonly Rectangle[,] highlights = new Rectangle[8, 8];
+        private readonly Ellipse[,] highlights = new Ellipse[8, 8];
 
         private readonly Dictionary<Position, Move> moveCache = new Dictionary<Position, Move>();
 
@@ -36,7 +37,9 @@ namespace ChessUI
 
         private void InicializeBoard()
         {
-            for(int row = 0; row < 8; row++)
+            double ellipseSize = 25; // Adjust the size of the highlight ellipses as needed
+
+            for (int row = 0; row < 8; row++)
             {
                 for (int col = 0; col < 8; col++)
                 {
@@ -44,8 +47,12 @@ namespace ChessUI
                     pieceImages[row, col] = image;
                     PieceGrid.Children.Add(image);
 
-                    Rectangle highlight = new Rectangle();
+                    Ellipse highlight = new Ellipse();
                     highlights[row, col] = highlight;
+                    // Set the size of the highlight ellipse
+                    highlight.Width = ellipseSize;
+                    highlight.Height = ellipseSize;
+                    highlight.Opacity = 1;
                     HighlightGrid.Children.Add(highlight);
                 }
             }
@@ -141,11 +148,33 @@ namespace ChessUI
 
         private void ShowHighlights()
         {
-            Color color = Color.FromRgb(245, 246, 130);
-
-            foreach(Position to in moveCache.Keys)
+            Color colorWhite = Color.FromRgb(202, 203, 179);
+            Color colorBlack = Color.FromRgb(99, 128, 79);
+            foreach (Position to in moveCache.Keys)
             {
-                highlights[to.Row, to.Column].Fill = new SolidColorBrush(color);
+         
+               if (to.SquareColor() == Player.White)
+                {
+                    highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorWhite);
+                }
+                else
+                {
+                    highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorBlack);
+                }
+                if (gameState.Board[to] != null && gameState.Board[to].Color != gameState.CurrentPlayer)
+                {
+                    highlights[to.Row, to.Column].Width = 70;
+                    highlights[to.Row, to.Column].Height = 70;
+
+                    if (to.SquareColor() == Player.White)
+                    {
+                        highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorWhite);
+                    }
+                    else
+                    {
+                        highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorBlack);
+                    }
+                }
             }
         }
 

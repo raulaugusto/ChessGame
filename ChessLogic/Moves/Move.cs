@@ -12,7 +12,7 @@
             Player movingPlayer = board[fromPosition].Color;
             Board copyBoard = board.Copy();
             Execute(copyBoard);
-            return !copyBoard.IsIncheck(movingPlayer);
+            return !copyBoard.IsInCheck(movingPlayer);
         }
     }
 }

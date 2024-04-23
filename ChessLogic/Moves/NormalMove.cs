@@ -25,5 +25,10 @@ namespace ChessLogic
             board[fromPosition] = null;
             piece.HasMoved = true;
         }
+
+
+      
+
+
     }
 }

@@ -84,7 +84,7 @@
             return PiecePositions().Where(pos => this[pos].Color == player);
         }
 
-        public bool IsIncheck(Player player)
+        public bool IsInCheck(Player player)
         {
             return PiecePositionsFor(player.Oponnent()).Any(pos =>
             {
