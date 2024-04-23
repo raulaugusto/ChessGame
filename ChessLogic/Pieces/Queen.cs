@@ -24,7 +24,7 @@
         public override Piece Copy()
         {
             Queen copy = new Queen(Color);
-            Copy().HasMoved = HasMoved;
+            copy.HasMoved = HasMoved;
             return copy;
         }
         public override IEnumerable<Move> GetMoves(Position from, Board board)

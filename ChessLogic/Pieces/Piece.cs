@@ -35,5 +35,14 @@
             }
         }
 
+        public virtual bool CanCaptureOponnentKing(Position from, Board board)
+        {
+            return GetMoves(from, board).Any(move =>
+            {
+                Piece piece = board[move.toPosition];
+                return piece != null && piece.Type == PieceType.King;
+            });
+        }
+
     }
 }

@@ -24,7 +24,7 @@ namespace ChessLogic
         public override Piece Copy()
         {
             King copy = new King(Color);
-            Copy().HasMoved = HasMoved;
+            copy.HasMoved = HasMoved;
             return copy;
         }
 
@@ -52,6 +52,15 @@ namespace ChessLogic
             {
                 yield return new NormalMove(from, pos);
             }
+        }
+
+        public override bool CanCaptureOponnentKing(Position from, Board board)
+        {
+            return MovePositions(from, board).Any(move =>
+            {
+                Piece piece = board[move];
+                return piece != null && piece.Type == PieceType.King;
+            });
         }
 
     }

@@ -9,7 +9,7 @@
         public GameState(Player player, Board board)
         {
             Board = board;
-            CurrentPlayer = Player.White;
+            CurrentPlayer = player;
         }
 
         public IEnumerable<Move> LegalMovesForPiece(Position pos)
@@ -20,7 +20,9 @@
             }
             Piece piece = Board[pos];
 
-            return piece.GetMoves(pos, Board);
+            IEnumerable<Move> moveCandidates = piece.GetMoves(pos, Board);
+            Console.WriteLine("test");
+            return moveCandidates.Where(move => move.IsLegal(Board));
         }
 
         public void MakeMove(Move move)

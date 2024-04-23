@@ -20,7 +20,7 @@
         public override Piece Copy()
         {
             Rook copy = new Rook(Color);
-            Copy().HasMoved = HasMoved;
+            copy.HasMoved = HasMoved;
             return copy;
         }
 
