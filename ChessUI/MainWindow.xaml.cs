@@ -37,7 +37,7 @@ namespace ChessUI
 
         private void InicializeBoard()
         {
-            double ellipseSize = 25; // Adjust the size of the highlight ellipses as needed
+            double ellipseSize = 22;
 
             for (int row = 0; row < 8; row++)
             {
@@ -49,7 +49,6 @@ namespace ChessUI
 
                     Ellipse highlight = new Ellipse();
                     highlights[row, col] = highlight;
-                    // Set the size of the highlight ellipse
                     highlight.Width = ellipseSize;
                     highlight.Height = ellipseSize;
                     highlight.Opacity = 1;
@@ -152,29 +151,31 @@ namespace ChessUI
             Color colorBlack = Color.FromRgb(99, 128, 79);
             foreach (Position to in moveCache.Keys)
             {
-         
-               if (to.SquareColor() == Player.White)
-                {
-                    highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorWhite);
-                }
-                else
-                {
-                    highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorBlack);
-                }
-                if (gameState.Board[to] != null && gameState.Board[to].Color != gameState.CurrentPlayer)
-                {
-                    highlights[to.Row, to.Column].Width = 70;
-                    highlights[to.Row, to.Column].Height = 70;
 
-                    if (to.SquareColor() == Player.White)
-                    {
-                        highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorWhite);
-                    }
-                    else
-                    {
-                        highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorBlack);
-                    }
-                }
+               if (to.SquareColor() == Player.White)
+               {
+                    highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorWhite);
+               }
+               else
+               {
+                   highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorBlack);
+               }
+
+               //If there is an opponent piece in the to position, increase the size of the highlight
+               if (gameState.Board[to] != null && gameState.Board[to].Color != gameState.CurrentPlayer)
+               {
+                   highlights[to.Row, to.Column].Width = 70;
+                   highlights[to.Row, to.Column].Height = 70;
+
+                   if (to.SquareColor() == Player.White)
+                   {
+                       highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorWhite);
+                   }
+                   else
+                   {
+                       highlights[to.Row, to.Column].Fill = new SolidColorBrush(colorBlack);
+                   }
+               }
             }
         }
 
@@ -182,6 +183,8 @@ namespace ChessUI
         {
             foreach(Position to in moveCache.Keys)
             {
+                highlights[to.Row, to.Column].Width = 22;
+                highlights[to.Row, to.Column].Height = 22;
                 highlights[to.Row, to.Column].Fill = Brushes.Transparent;
             }
         }
