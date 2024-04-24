@@ -45,13 +45,13 @@ namespace ChessLogic
             {
                 yield return new NormalMove(from, oneMovePosition);
                 Position twoMovePosition = oneMovePosition + forward;
-
-                if (!HasMoved && CanMoveTo(oneMovePosition, board))
+                if (!board[from].HasMoved && CanMoveTo(twoMovePosition, board))
                 {
                     yield return new NormalMove(from, twoMovePosition);
                 }
             }
         }
+
 
         private IEnumerable<Move> DiagonalMoves(Position from, Board board)
         {
