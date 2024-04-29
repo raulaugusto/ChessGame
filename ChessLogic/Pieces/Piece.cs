@@ -35,7 +35,7 @@
             }
         }
 
-        public virtual bool CanCaptureOponnentKing(Position from, Board board)
+        public virtual bool CanCaptureOpponentKing(Position from, Board board)
         {
             return GetMoves(from, board).Any(move =>
             {

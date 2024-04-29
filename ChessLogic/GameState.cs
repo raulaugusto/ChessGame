@@ -1,10 +1,12 @@
-﻿namespace ChessLogic
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ChessLogic
 {
     public class GameState
     {
         public Board Board { get; }
-
         public Player CurrentPlayer { get; private set; }
+        public Result Result { get; private set; } = null;
 
         public GameState(Player player, Board board)
         {
@@ -21,7 +23,6 @@
             Piece piece = Board[pos];
 
             IEnumerable<Move> moveCandidates = piece.GetMoves(pos, Board);
-            Console.WriteLine("test");
             return moveCandidates.Where(move => move.IsLegal(Board));
         }
 
@@ -29,7 +30,36 @@
         {
             move.Execute(Board);
             CurrentPlayer = CurrentPlayer.Oponnent();
+            CheckForGameOver();
         }
             
+        public IEnumerable<Move> AllLegamMovesForPlayer(Player player)
+        {
+            IEnumerable<Move> moveCandidates = Board.PiecePositionsFor(player).SelectMany(pos =>
+            {
+                Piece piece = Board[pos];
+                return piece.GetMoves(pos, Board);
+            });
+
+            return moveCandidates.Where(move => move.IsLegal(Board));
+        }
+        public void CheckForGameOver()
+        {
+            if (!AllLegamMovesForPlayer(CurrentPlayer).Any())
+            {
+                if(Board.IsInCheck(CurrentPlayer))
+                {
+                    Result = Result.Win(CurrentPlayer.Oponnent());
+                }
+                else
+                {
+                    Result = Result.Draw(EndReason.Stalemate);
+                }
+            }
+        }
+        public bool IsGameOver()
+        {
+            return Result != null;
+        }
     }
 }

@@ -31,7 +31,7 @@ namespace ChessLogic
 
         public IEnumerable<Position> MovePositions(Position from, Board board)
         {
-            foreach(Direction dir in dirs)
+            foreach (Direction dir in dirs)
             {
                 Position to = from + dir;
                 if (!Board.isInside(to))
@@ -42,19 +42,19 @@ namespace ChessLogic
                 if (board.isEmpty(to) || board[to].Color != Color)
                 {
                     yield return to;
-                } 
+                }
             }
         }
 
         public override IEnumerable<Move> GetMoves(Position from, Board board)
         {
-            foreach(Position pos in MovePositions(from, board))
+            foreach (Position pos in MovePositions(from, board))
             {
                 yield return new NormalMove(from, pos);
             }
         }
 
-        public override bool CanCaptureOponnentKing(Position from, Board board)
+        public override bool CanCaptureOpponentKing(Position from, Board board)
         {
             return MovePositions(from, board).Any(move =>
             {
@@ -63,5 +63,41 @@ namespace ChessLogic
             });
         }
 
+        //public Position CanCastleQueenSide(Board board)
+        //{
+        //    Piece king = this;
+        //    if (!king.HasMoved)
+        //    {
+        //        if (king.Color == Player.White)
+        //        {
+        //            int row = 0;
+        //            for (int c = 4; c > 0; c++)
+        //            {
+        //                if (!board.isEmpty(new Position(row, c)))
+        //                {
+        //                    return null;
+        //                }
+        //            } 
+        //            return new Position(row, 2);
+        //        }
+        //        else
+        //        {
+        //            int row = 7;
+        //            for (int c = 4; c > 0; c++)
+        //            {
+        //                if (!board.isEmpty(new Position(row, c)))
+        //                {
+        //                    return null;
+        //                }
+        //            }
+        //            return new Position(row, 2);
+        //        }
+
+        //    }
+        //    else
+        //    {
+        //        return new Position(0, 0);
+        //    }
+        //}
     }
 }

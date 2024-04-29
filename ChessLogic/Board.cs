@@ -89,7 +89,7 @@
             return PiecePositionsFor(player.Oponnent()).Any(pos =>
             {
                 Piece piece = this[pos];
-                return piece.CanCaptureOponnentKing(pos, this);
+                return piece.CanCaptureOpponentKing(pos, this);
             });
         }
 
