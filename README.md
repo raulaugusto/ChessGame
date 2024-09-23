@@ -12,10 +12,14 @@
 
 ## Estrutura do Projeto
 - **ChessLogic**: Contém a lógica principal do jogo de xadrez, incluindo as regras de movimentação e captura de peças.
+  - São implementadas classes para representar cada peça do jogo, definindo suas direções de movimento.
+  - Ao clicar em uma peça no tabuleiro, gera todos os movimentos possíveis para a peça e exclui os ilegais depois imprime na tela.
+  - Faz a verificação para xeque-mate após cada movimento que ameaça o rei calculando os movimentos possíveis que protejam o rei.
 - **ChessUI**: Interface gráfica para o tabuleiro de xadrez, permitindo interação do usuário.
+  - Usa Xaml para gerar uma representação gráfica do tabuleiro na tela.
 
 ## Requisitos
-- .NET Framework (versão X ou superior).
+- .NET Framework.
 - Sistema Windows.
 
 ## Como Rodar
@@ -36,5 +40,3 @@ Se desejar contribuir:
 3. Faça commit das suas alterações e envie um pull request.
 
 ---
-
-Se precisar ajustar algo ou incluir mais detalhes, é só avisar!
