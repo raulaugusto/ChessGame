@@ -2,6 +2,7 @@
 
 **ChessGame** é um jogo de xadrez funcional para dois jogadores, desenvolvido em C# utilizando a estrutura de classes para representar peças e lógicas do jogo.
 
+**Documentação Completa:** [https://github.com/raulaugusto/ChessGame/wiki]
 ## Funcionalidades
 - Suporte a partidas entre dois jogadores no mesmo dispositivo.
 - Tabuleiro gráfico que mostra o movimento das peças.
